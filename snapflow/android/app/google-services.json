@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "104537550413",
+    "project_id": "snapflow-4577d",
+    "storage_bucket": "snapflow-4577d.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:104537550413:android:47701b03ad015240b33604",
+        "android_client_info": {
+          "package_name": "com.snapflow.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "104537550413-gbp2v43r4uenf9pkah7ioumj588e8ujk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.snapflow.app",
+            "certificate_hash": "4215cb19d5195287dadced62dd1e5d877d49da3f"
+          }
+        },
+        {
+          "client_id": "104537550413-dpnf7ug1u9m3q8h3n14lb3dd8ds1l46s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDN6Tlko1InF1uDTO11KiyWmZwpfDHka0Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "104537550413-dpnf7ug1u9m3q8h3n14lb3dd8ds1l46s.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "104537550413-tqfnde95qi68c1rfbahasocv5ov402ct.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.snapflow.app"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
