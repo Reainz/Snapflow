@@ -96,6 +96,12 @@ firebase-debug.log
 filtered_log.txt
 *.log.txt
 
+# Documentation files with sensitive information
+*CREDENTIALS*.md
+*credentials*.md
+*SECRETS*.md
+*secrets*.md
+
 # Android build artifacts
 android/build/
 android/app/build/
