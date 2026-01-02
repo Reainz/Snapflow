@@ -1,0 +1,24 @@
+{
+  "lifecycle": {
+    "rule": [
+      {
+        "action": {
+          "type": "Delete"
+        },
+        "condition": {
+          "age": 7,
+          "matchesPrefix": ["raw-videos/"]
+        }
+      },
+      {
+        "action": {
+          "type": "AbortIncompleteMultipartUpload"
+        },
+        "condition": {
+          "age": 1
+        }
+      }
+    ]
+  }
+}
+
