@@ -1,0 +1,7 @@
+.env
+.env.*
+.env.yaml
+lib/
+coverage/
+*.tsbuildinfo
+firebase-debug.log
