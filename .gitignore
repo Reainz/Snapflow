@@ -64,6 +64,7 @@ keys/**.json
 # Sensitive data files
 users.json
 filtered_log.txt
+CLOUDINARY_CREDENTIALS_UPDATE.md
 
 # Temporary files
 _tmp_*.dart
