@@ -17,41 +17,41 @@
 
 ## 📖 Overview
 
-Snapflow is a TikTok/Instagram Reels-style short-video sharing platform developed as a **final-year thesis project**. It demonstrates modern mobile development practices, serverless backend architecture, and cloud-based video processing pipelines.
+Snapflow is a TikTok/Instagram Reels-style short-video sharing platform developed as a **final-year thesis project** by Tran Dinh Nhat Dang (522k0013) and Thu Reain Htet Aung (522k0044). The platform demonstrates modern mobile development practices, serverless backend architecture, and cloud-based video processing pipelines.
 
-The platform enables users to create, share, and discover short-form video content (15-60 seconds) with social interactions, real-time features, and AI-powered capabilities like automatic captioning.
+The system enables users to create, share, and discover short-form video content (15-60 seconds) with social interactions, real-time features, and AI-powered capabilities including automatic captioning.
 
 ### 🎯 Project Objectives
 
-- **Mobile Development**: Cross-platform app using Flutter with GetX reactive state management
+- **Mobile Development**: Cross-platform app using Flutter with GetX state management
 - **Serverless Architecture**: Scalable backend using Firebase ecosystem
 - **Video Processing Pipeline**: Cloud-based HLS transcoding via Cloudinary API
 - **Real-time Features**: Live updates for social interactions using Firestore
-- **Admin Dashboard**: Comprehensive analytics and content moderation interface
+- **Admin Dashboard**: Analytics and content moderation interface
 
 ---
 
 ## ✨ Features
 
 ### Core Features
-- 🎥 **Video Upload** - Record or upload short videos (15-60 seconds)
-- 📺 **Video Feed** - TikTok-style vertical scrolling feed with HLS streaming
-- ❤️ **Social Interactions** - Like, comment, follow, and share functionality
-- 🔔 **Push Notifications** - Real-time notifications via Firebase Cloud Messaging
-- 🔍 **Search & Discovery** - Find videos by title, hashtags, or users
-- 👤 **User Profiles** - Customizable profiles with video galleries
+- Video upload and recording (15-60 seconds)
+- TikTok-style vertical scrolling feed with HLS streaming
+- Social interactions (like, comment, follow, share)
+- Real-time push notifications via Firebase Cloud Messaging
+- Search and discovery by title, hashtags, or users
+- Customizable user profiles with video galleries
 
 ### Advanced Features
-- 🔐 **Privacy Controls** - Public, private, and followers-only video settings
-- 📝 **Auto Captions** - AI-powered speech-to-text via Cloudinary
-- 🎨 **Camera Filters** - Real-time filters during recording
-- 💾 **Offline Support** - Queue actions when offline, sync when connected
-- 🌙 **Dark Mode** - Full dark theme with system-based switching
+- Privacy controls (public, private, followers-only)
+- AI-powered auto-captions via Cloudinary speech-to-text
+- Real-time camera filters during recording
+- Offline support with action queuing and sync
+- Full dark mode with system-based switching
 
 ### Admin Dashboard
-- 📊 **Analytics** - User metrics, video statistics, engagement tracking
-- 🛡️ **Content Moderation** - Review and manage flagged content
-- 📈 **System Health** - Processing status, storage usage, CDN metrics
+- Analytics dashboard with user metrics and engagement tracking
+- Content moderation tools for flagged content review
+- System health monitoring (processing status, storage, CDN metrics)
 
 ---
 
@@ -84,37 +84,13 @@ Snapflow implements **Flow B (Cloudinary HLS)** architecture for video processin
 
 ## 🛠️ Tech Stack
 
-### Mobile App
-| Technology | Purpose |
-|------------|---------|
-| **Flutter** | Cross-platform UI framework |
-| **GetX** | State management, navigation, dependency injection |
-| **video_player** | HLS video playback |
-| **camera** | Video recording |
-| **firebase_* packages** | Firebase SDK integration |
+**Mobile App:** Flutter, GetX (state management), video_player (HLS playback), camera, Firebase SDK
 
-### Backend (Serverless)
-| Technology | Purpose |
-|------------|---------|
-| **Firebase Auth** | User authentication with social login |
-| **Cloud Firestore** | Real-time NoSQL database |
-| **Firebase Storage** | Raw video file storage |
-| **Cloud Functions** | Serverless backend logic (Node.js/TypeScript) |
-| **Firebase Cloud Messaging** | Push notifications |
+**Backend (Serverless):** Firebase Auth, Cloud Firestore, Firebase Storage, Cloud Functions (Node.js/TypeScript), Firebase Cloud Messaging
 
-### External Services
-| Technology | Purpose |
-|------------|---------|
-| **Cloudinary** | Video processing, HLS transcoding, CDN delivery |
-| **Cloudinary AI** | Auto-captioning (speech-to-text) |
+**External Services:** Cloudinary (video processing, HLS transcoding, CDN delivery, AI captioning)
 
-### Admin Dashboard
-| Technology | Purpose |
-|------------|---------|
-| **Next.js** | React framework for web dashboard |
-| **TanStack Query** | Data fetching and caching |
-| **Recharts** | Analytics visualizations |
-| **shadcn/ui** | UI components |
+**Admin Dashboard:** Next.js, TanStack Query, Recharts, shadcn/ui
 
 ---
 
@@ -127,102 +103,68 @@ Snapflow implements **Flow B (Cloudinary HLS)** architecture for video processin
 - Firebase CLI
 - Android Studio / Xcode (for mobile development)
 
-### 1. Clone the Repository
+### Setup
 
-```bash
-git clone https://github.com/yourusername/snapflow.git
-cd snapflow
-```
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/yourusername/snapflow.git
+   cd snapflow
+   ```
 
-### 2. Flutter App Setup
+2. **Flutter App:**
+   ```bash
+   flutter pub get
+   flutterfire configure --project YOUR_PROJECT_ID --platforms=android,ios
+   flutter run
+   ```
 
-```bash
-cd snapflow
+3. **Cloud Functions:**
+   ```bash
+   cd functions
+   npm ci
+   firebase functions:config:set cloudinary.cloud_name="YOUR_CLOUD_NAME" \
+     cloudinary.api_key="YOUR_API_KEY" cloudinary.api_secret="YOUR_API_SECRET"
+   npm run build && firebase deploy --only functions
+   ```
 
-# Install dependencies
-flutter pub get
+4. **Admin Dashboard:**
+   ```bash
+   cd snapflow-admin
+   npm install
+   cp .env.example .env.local  # Edit with your Firebase config
+   npm run dev
+   ```
 
-# Configure Firebase (requires Firebase CLI)
-flutterfire configure --project YOUR_PROJECT_ID --platforms=android,ios
-
-# Run the app
-flutter run
-```
-
-### 3. Cloud Functions Setup
-
-```bash
-cd snapflow/functions
-
-# Install dependencies
-npm ci
-
-# Configure environment variables
-firebase functions:config:set \
-  cloudinary.cloud_name="YOUR_CLOUD_NAME" \
-  cloudinary.api_key="YOUR_API_KEY" \
-  cloudinary.api_secret="YOUR_API_SECRET"
-
-# Build and deploy
-npm run build
-firebase deploy --only functions
-```
-
-### 4. Admin Dashboard Setup
-
-```bash
-cd snapflow-admin
-
-# Install dependencies
-npm install
-
-# Configure environment variables
-cp .env.example .env.local
-# Edit .env.local with your Firebase config
-
-# Run development server
-npm run dev
-```
+For detailed setup instructions, see the documentation in `doc/` directory.
 
 ---
 
-## 📁 Project Structure
+## 📁 Repository Structure
 
-```
-snapflow/
-├── snapflow/                    # Flutter mobile app
-│   ├── lib/
-│   │   ├── app/
-│   │   │   ├── core/            # Services, theme, utilities
-│   │   │   ├── data/            # Models and repositories
-│   │   │   ├── modules/         # Feature modules (GetX pattern)
-│   │   │   │   ├── auth/
-│   │   │   │   ├── video_feed/
-│   │   │   │   ├── video_upload/
-│   │   │   │   ├── profile/
-│   │   │   │   ├── comments/
-│   │   │   │   ├── search/
-│   │   │   │   └── notifications/
-│   │   │   ├── routes/          # App navigation
-│   │   │   └── widgets/         # Shared widgets
-│   │   └── main.dart
-│   └── functions/               # Firebase Cloud Functions
-│       └── src/
-│           ├── video/           # Video processing
-│           ├── storage/         # Signed URLs, CDN
-│           ├── analytics/       # Metrics collection
-│           ├── auth/            # Admin role management
-│           └── utils/           # Cloudinary, Firestore helpers
-│
-├── snapflow-admin/              # Next.js admin dashboard
-│   ├── app/                     # App router pages
-│   ├── components/              # React components
-│   └── lib/                     # Utilities and API clients
-│
-└── doc/                         # Documentation
-    ├── main-docs/               # Core project documents
-    └── new-docs/                # Implementation guides
-```
+### `lib/`
+Contains Flutter mobile app implementation with GetX state management.
+
+→ Source code details: [lib/README.md](lib/README.md)
+
+### `functions/`
+Contains Firebase Cloud Functions implementation for video processing, analytics, and backend services.
+
+→ Source code details: [functions/README.md](functions/README.md)
+
+### `snapflow-admin/`
+Contains Next.js admin dashboard for analytics and content moderation.
+
+→ Source code details: [snapflow-admin/README.md](snapflow-admin/README.md)
+
+### `load-tests/`
+Contains k6 load/stress tests for admin dashboard API endpoints and auto-scaling benchmarks.
+
+→ Testing details: [load-tests/README.md](load-tests/README.md)
+
+### `doc/`
+Contains project documentation including requirements, architecture, and implementation guides.
+
+→ Documentation: [doc/](doc/)
 
 ---
 
@@ -240,25 +182,13 @@ snapflow/
 
 ---
 
-## 🎨 Design System
-
-Snapflow is **100% Material Design 3 compliant**:
-
-- **Color System**: Dynamic color scheme with purple seed color
-- **Typography**: Material3 text theme tokens
-- **Components**: FilledButton, OutlinedButton, TextButton patterns
-- **Dark Mode**: Full dark theme with system-based switching
-- **Spacing**: 4dp grid system with consistent spacing constants
-
----
-
 ## 🔐 Security
 
-- **Firebase Security Rules**: Comprehensive Firestore and Storage rules
-- **Authenticated Delivery**: Signed URLs for private video content
-- **Rate Limiting**: Protection against upload abuse
-- **Admin Role Management**: Custom claims for admin access
-- **Webhook Verification**: HMAC signature validation for Cloudinary callbacks
+- Firebase Security Rules for Firestore and Storage
+- Authenticated delivery via signed URLs for private video content
+- Rate limiting protection against upload abuse
+- Admin role management with custom claims
+- Webhook verification with HMAC signature validation for Cloudinary callbacks
 
 ---
 
@@ -287,26 +217,21 @@ flutter test
 
 ### Cloud Functions
 ```bash
-cd snapflow/functions
+cd functions
 npm test
 ```
 
-Test coverage includes:
+### Load/Stress Tests (k6)
+
+The `load-tests/` directory contains k6-based load and stress tests for the admin dashboard API endpoints, including auto-scaling benchmark tests that combine k6 load testing with Google Cloud Monitoring API metrics.
+
+**Test Coverage:**
 - Unit tests for Cloud Functions (80%+ coverage)
 - Widget tests for key UI components
 - Integration tests for critical flows
+- Load/stress tests for admin dashboard API endpoints
 
----
-
-## 🤝 Contributing
-
-This is a thesis project, but suggestions and feedback are welcome!
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit changes (`git commit -m 'Add amazing feature'`)
-4. Push to branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+→ Detailed testing documentation: [load-tests/README.md](load-tests/README.md)
 
 ---
 
@@ -318,11 +243,12 @@ This project is developed for educational purposes as part of a final-year thesi
 
 ## 👨‍💻 Authors
 
-**Thu Reain Htet Aung**
-- GitHub: [@reainz](https://github.com/Reainz)
+**Tran Dinh Nhat Dang (522k0013)**  
+GitHub: [@monkeynerdcoding](https://github.com/MonkeyNerdCoding)
 
-**Tran Dinh Nhat Dang**
-- GitHub: [@monkeynerdcoding](https://github.com/MonkeyNerdCoding)
+**Thu Reain Htet Aung (522k0044)**  
+GitHub: [@reainz](https://github.com/Reainz)
+
 ---
 
 ## 🙏 Acknowledgments
@@ -335,8 +261,8 @@ This project is developed for educational purposes as part of a final-year thesi
 
 ---
 
-<div align="center">
+## 📝 Academic Note
 
-**⭐ Star this repository if you find it helpful!**
+This repository is intended for **research and educational purposes only.**
 
-</div>
+The original algorithm ideas and technologies belong to their respective authors and organizations.
