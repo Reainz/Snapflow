@@ -1,0 +1,17 @@
+{
+  "name": "snapflow-load-tests",
+  "version": "1.0.0",
+  "description": "Load and auto-scaling benchmark tests for Snapflow",
+  "type": "module",
+  "scripts": {
+    "benchmark": "node scripts/run_autoscaling_benchmark.mjs",
+    "fetch-metrics": "node scripts/fetch_gcp_metrics.mjs",
+    "generate-report": "node scripts/generate_autoscaling_report.mjs"
+  },
+  "dependencies": {
+    "@google-cloud/monitoring": "^5.3.1"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

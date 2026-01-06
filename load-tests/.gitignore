@@ -2,8 +2,11 @@
 node_modules/
 
 # Generated test results and reports
-*.json
 *.html
+gcp_metrics.json
+k6_results.json
+autoscaling_report.html
 
-# Keep example/template files if needed
-# !example_results.json
+# Keep package files (needed for dependencies)
+!package.json
+!package-lock.json
