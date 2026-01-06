@@ -4,6 +4,7 @@
 export const ADMIN_EMAILS: string[] = [
   // 'admin@test.com',
   // 'teacher@example.com',
+  'demo1@snapflow.test', // Added for k6 load testing
 ];
 
 // Domain allow-list (lowercase; may optionally include leading '@')

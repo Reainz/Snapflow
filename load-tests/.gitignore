@@ -1,0 +1,9 @@
+# Node modules
+node_modules/
+
+# Generated test results and reports
+*.json
+*.html
+
+# Keep example/template files if needed
+# !example_results.json
