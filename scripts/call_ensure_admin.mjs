@@ -1,14 +1,33 @@
 // Call ensureAdminRole Cloud Function to grant admin to demo1@snapflow.test
 // This script authenticates as demo1, then calls the ensureAdminRole function
+//
+// Usage:
+//   FIREBASE_PROJECT_ID=snapflow-4577d \
+//   FIREBASE_API_KEY=your_api_key \
+//   TEST_EMAIL=demo1@snapflow.test \
+//   TEST_PASSWORD=your_password \
+//   node call_ensure_admin.mjs
 
 import process from 'node:process';
 import https from 'node:https';
 import { URL } from 'node:url';
 
-const PROJECT_ID = 'snapflow-4577d';
-const API_KEY = 'AIzaSyDN6Tlko1InF1uDTO11KiyWmZwpfDHka0Y';
-const EMAIL = 'demo1@snapflow.test';
-const PASSWORD = 'Demo123!';
+const PROJECT_ID = process.env.FIREBASE_PROJECT_ID || 'snapflow-4577d';
+const API_KEY = process.env.FIREBASE_API_KEY;
+const EMAIL = process.env.TEST_EMAIL || 'demo1@snapflow.test';
+const PASSWORD = process.env.TEST_PASSWORD;
+
+if (!API_KEY) {
+  console.error('❌ Error: FIREBASE_API_KEY environment variable is required');
+  console.error('   Set it with: export FIREBASE_API_KEY=your_api_key');
+  process.exit(1);
+}
+
+if (!PASSWORD) {
+  console.error('❌ Error: TEST_PASSWORD environment variable is required');
+  console.error('   Set it with: export TEST_PASSWORD=your_password');
+  process.exit(1);
+}
 
 // Step 1: Sign in with email/password to get ID token
 async function signInWithPassword() {
